@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "List Employee";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section scripts{
@@ -10,28 +10,37 @@
     <script src="~/Scripts/controller/dataController.js"></script>
 }
 <h1>Key: @ViewBag.KeyID</h1>
-<table class="table">
-    <thead>
-        <tr>
-            <td>ID</td>
-            <td>Name</td>
-            <td>Address</td>
-            <td>Status</td>
-            <td style="text-align:center">Action</td>
-        </tr>
-    </thead>
-    <tbody id="tbl_data"></tbody>
-</table>
-<div id="pagination" class="pagination">
+<div class="row">
+    <div class="col-md-12">
+        <table class="table ">
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Name</td>
+                    <td>Address</td>
+                    <td>Status</td>
+                    <td style="text-align:center">Action</td>
+                </tr>
+            </thead>
+            <tbody id="tbl_data"></tbody>
+        </table>
+        <div id="pagination" class="pagination">
+
+        </div>
+        <script id="data-template" type="x-tmpl-mustache">
+            <tr>
+                <td>{{ID}}</td>
+                <td><input type="text" class="txtName" data-id="{{ID}}" value="{{Name}}" /></td>
+                <td><input type="text" class="txtAddress" data-id="{{ID}}" value="{{Address}}" /></td>
+                <td>{{{Status}}}</td>
+                <td style="text-align:center">
+                    <button type="button" class="btn btn-primary btn-edit" data-id="{{ID}}">Edit</button>&nbsp;
+                    <button id='btnDelete' type="button" class="btn btn-warning" data-id="{{ID}}">Delete</button>
+                </td>
+            </tr>
+        </script>
+
+    </div>
 
 </div>
-<script id="data-template" type="x-tmpl-mustache">
-    <tr>
-        <td>{{ID}}</td>
-        <td><input type="text" class="txtName" data-id="{{ID}}" value="{{Name}}" /></td>
-        <td><input type="text" class="txtAddress" data-id="{{ID}}" value="{{Address}}" /></td>
-        <td>{{{Status}}}</td>
-        <td style="text-align:center"><button type="button" class="btn btn-primary btn-edit" data-id="{{ID}}">Edit</button>&nbsp;
-        <button id='btnDelete' type="button" class="btn btn-warning" data-id="{{ID}}">Delete</button></td>
-    </tr>
-</script>
+

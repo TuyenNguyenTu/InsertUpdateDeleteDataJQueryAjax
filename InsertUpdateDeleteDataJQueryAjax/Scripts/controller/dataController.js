@@ -1,5 +1,5 @@
 ﻿var dataConfig = {
-    pageSize: 3,
+    pageSize: 5,
     pageIndex: 1
 }
 var dataController = {
