@@ -48,6 +48,7 @@ var dataController = {
                 if (response.status == true) {
                     alert("Save success");
                     $('#modalAddUpdate').modal('hide');
+                    dataController.LoadData();
                 }
                 else {
                     alert(response.Message);
@@ -128,6 +129,5 @@ var dataController = {
             }
         });
     }
-
 }
 dataController.init();
