@@ -12,6 +12,11 @@
 <h1>Key: @ViewBag.KeyID</h1>
 <div class="row">
     <div class="col-md-12">
+        <button id="btnAddEm" class="btn btn-success">Add New Employee</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
         <table class="table ">
             <thead>
                 <tr>
@@ -43,4 +48,43 @@
     </div>
 
 </div>
-
+<div class="modal" tabindex="-1" role="dialog" id="modalAddUpdate">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4>Add/Update Employee</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="txtName">Name:</label>
+                        <input type="text" class="form-control" id="txtName" aria-describedby="emailHelp" placeholder="Enter Your Name">
+                        <input type="hidden" id="hidID" value="0" />
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtAddress">Address</label>
+                        <input type="text" class="form-control" id="txtAddress" placeholder="Address">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Active</label>
+                        <input type="checkbox" class="form-check-input" id="ckbStatus">
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btnSaveChanges">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

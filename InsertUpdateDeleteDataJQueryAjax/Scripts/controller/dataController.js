@@ -15,7 +15,54 @@ var dataController = {
                 var value = $(this).val();
                 dataController.updateData(id, value);
             }
+        });
+        $('#btnAddEm').off('click').on('click', function (e) {
+            $('#modalAddUpdate').modal('show');
+            dataController.resetForm();
+        });
+        $('#btnSaveChanges').off('click').on('click', function (e) {
+            dataController.saveData();
         })
+    },
+    saveData: function () {
+        var name = $('#txtName').val();
+        var address = $('#txtAddress').val();
+        var status = $('#ckbStatus').prop('checked');
+        var id = parseInt($('#hidID').val());
+        var employee = {
+            Name: name,
+            Address: address,
+            Status: status,
+            ID: id
+        }
+        $.ajax({
+            url: '/SaveData',
+            //dong goi lai data
+            data: {
+                // chuyen sang chuoi
+                strEmployee : JSON.stringify(employee)
+            },
+            type: "POST",
+            dataType: "JSON",
+            success: function (response) {
+                if (response.status == true) {
+                    alert("Save success");
+                    $('#modalAddUpdate').modal('hide');
+                }
+                else {
+                    alert(response.Message);
+                }
+            },
+            error: function (err) {
+                alert(err);
+            }
+        })
+    },
+    resetForm: function () {
+        $('#hidID').val('0');
+        $('#txtName').val("");
+        $('#txtAddress').val('');
+        $('#ckbStatus').prop("checked", true);
     },
     updateData: function (id, value) {
         var data = {

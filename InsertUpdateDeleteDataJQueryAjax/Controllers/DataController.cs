@@ -58,5 +58,48 @@ namespace InsertUpdateDeleteDataJQueryAjax.Controllers
                 status = true
             });
         }
+        [HttpPost]
+        public JsonResult SaveData(string strEmployee)
+        {
+            EmployeeDbContext em = new EmployeeDbContext();
+            //tao 1 bien Serialize de chuyen doi tu Json sang object
+            JavaScriptSerializer javaScript = new JavaScriptSerializer();
+            bool status = false;
+            string message = string.Empty;
+            //Chuyen sang kieu Employee
+            tbl_Employee employee = javaScript.Deserialize<tbl_Employee>(strEmployee);
+            // add new Employee if ID = 0 
+            if (employee.ID == 0)
+            {
+                em.tbl_Employee.Add(employee);
+                em.SaveChanges();
+                status = true;
+            }
+            else
+            {
+                var obj = em.tbl_Employee.Single(x => x.ID == employee.ID);
+                obj.Name = employee.Name;
+                obj.Address = employee.Address;
+                obj.Status = employee.Status;
+                try
+                {
+                    em.SaveChanges();
+                    status = true;
+                }
+                catch (Exception ex)
+                {
+                    status = false;
+                    message = ex.Message;
+                    throw;
+                }
+            }
+            return Json(new
+            {
+                status = true,
+                Message = message
+            });
+        }
+
+
     }
 }
