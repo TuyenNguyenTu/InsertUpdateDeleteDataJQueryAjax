@@ -51,7 +51,7 @@ var dataController = {
                     dataController.LoadData();
                 }
                 else {
-                    alert(response.Message);
+                    alert("ERROR");
                 }
             },
             error: function (err) {

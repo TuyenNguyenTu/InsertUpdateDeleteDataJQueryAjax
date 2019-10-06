@@ -95,7 +95,7 @@ namespace InsertUpdateDeleteDataJQueryAjax.Controllers
             }
             return Json(new
             {
-                status = true,
+                status = status,
                 Message = message
             });
         }
